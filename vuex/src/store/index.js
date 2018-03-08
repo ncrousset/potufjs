@@ -6,7 +6,12 @@ Vue.use(Vuex);
 
 let store = new Vuex.Store({
     state: {
-        count: 0
+        count: 0,
+        persons: [
+            { id: 1, name: "Rudys Acosta", age: 25 },
+            { id: 2 , name: "Jose Miguel", age: 17 },
+            { id: 3, name: "Pancho Villa", age: 70 }
+        ]
     },
     mutations: {
         increment(state) {
@@ -14,7 +19,16 @@ let store = new Vuex.Store({
         },
         decrement(state) {
             state.count--;
-        }
+        },
+        addPerson(state, person) {
+            state.persons.push(person);
+        } 
+    },
+
+    getters: {
+       personsOfLegalAge: state => {
+            return state.persons.filter(person => person.age >= 21);
+       }
     }
 })
 
