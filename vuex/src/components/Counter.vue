@@ -1,12 +1,13 @@
 <template>
   <div>
       <h2>{{ count }}</h2>
-      <increment @increment='increment'/>      
-      <decrement @decrement='decrement'/>
+      <increment />      
+      <decrement />
   </div>
 </template>
 
 <script>
+    import store from '../store';
     import Increment from './Increment.vue';
     import Decrement from './Decrement.vue';
     
@@ -15,19 +16,13 @@
             Increment,
             Decrement
         },
-        data() {
-            return {
-                count: 0
+        computed: {
+            count() {
+                return store.state.count;
             }
         },
         methods: {
-            increment() {
-                this.count++;
-            },
-            decrement() {
-                this.count--;
-            }
+        
         }
-
     }
 </script>

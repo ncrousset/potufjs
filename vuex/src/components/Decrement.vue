@@ -2,11 +2,14 @@
   <button @click="decrement" class="btn btn-danger">Reducir</button>
 </template>
 <script>
+
+import store from '../store'
+
 export default {
   
     methods: {
         decrement() {
-            this.$emit('decrement');
+            store.commit('decrement');
         }
     }
 
