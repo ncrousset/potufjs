@@ -13,35 +13,31 @@
 </template>
 <script>
 
-import store from '../store';
+import { mapMutations } from 'vuex'
 
 export default {
 
     data() {
         return {
-            person: {
-                name: '',
-                age: ''
-            }
+            person: { name: '', age: '' }
         }
     },
         
     methods: {
-
         validation() {
             return (this.person.name.length > 0 && this.person.age > 0) ? true : false;
         },
+        ...mapMutations({
 
-        addPerson() {
-
-            if(!this.validation()) {
-                console.log('Error validate');
-                return false;
+            addPerson(commit, payload) {
+                if(!this.validation()) {
+                    console.log('Error validate');
+                    return false;
+                }
+                
+                commit('addPerson', this.person)
             }
-
-            store.commit('addPerson', this.person);
-
-        }
+        })
     }
 
 }

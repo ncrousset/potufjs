@@ -3,15 +3,11 @@
 </template>
 <script>
 
-import store from '../store'
+import { mapMutations } from 'vuex'
 
 export default {
-  
     methods: {
-        decrement() {
-            store.commit('decrement');
-        }
+        ...mapMutations(['decrement']),
     }
-
 }
 </script>

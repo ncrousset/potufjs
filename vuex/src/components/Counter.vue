@@ -7,7 +7,7 @@
 </template>
 
 <script>
-    import store from '../store';
+    import { mapState } from 'vuex'
     import Increment from './Increment.vue';
     import Decrement from './Decrement.vue';
     
@@ -17,12 +17,7 @@
             Decrement
         },
         computed: {
-            count() {
-                return store.state.count;
-            }
-        },
-        methods: {
-        
-        }
+            ...mapState(['count'])
+        } 
     }
 </script>

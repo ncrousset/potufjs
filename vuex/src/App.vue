@@ -6,10 +6,10 @@
 
     <div>
       <h2> Lista total de personas </h2>
-      {{ persons | json }}
+      {{ persons  }}
 
       <h2> Lista de personas mayores de 21</h2>
-      {{ personsOfLegalAge | json }}
+      {{ personsOfLegalAge }}
     </div>
 
 
@@ -21,9 +21,9 @@
 
 <script>
 
-import store from './store';
-import Counter from './components/Counter';
-import AddPerson from './components/AddPerson';
+import { mapGetters, mapState} from 'vuex'
+import Counter from './components/Counter'
+import AddPerson from './components/AddPerson'
 
 export default {
   components: {
@@ -31,15 +31,8 @@ export default {
     'add-person': AddPerson
   },
   computed: {
-    count() {
-      return store.state.count;
-    },
-    persons() {
-      return store.state.persons;
-    },
-    personsOfLegalAge() {
-      return store.getters.personsOfLegalAge;
-    }
+    ...mapState(['persons', 'count']),
+    ...mapGetters(['personsOfLegalAge'])
   },
   name: 'app',
   data () {
