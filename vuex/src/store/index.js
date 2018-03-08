@@ -21,7 +21,14 @@ let store = new Vuex.Store({
             state.count--;
         },
         addPerson(state, person) {
-            state.persons.push(person);
+
+            let p = {
+                id: '_' + Math.random().toString(36).substr(2, 9),
+                name: person.name,
+                age: person.age
+            };
+
+            state.persons.push(p);
         } 
     },
 

@@ -1,8 +1,8 @@
 <template>
   <div id="app" class="container">
-    <!-- <h1>Counter</h1>
+    <h1>Counter</h1>
     <counter />
-    <p>El contador va en: {{ count }}</p> -->
+    <p>El contador va en: {{ count }}</p> 
 
     <div>
       <h2> Lista total de personas </h2>
